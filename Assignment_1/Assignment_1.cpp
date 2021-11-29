@@ -2871,9 +2871,9 @@ void create() {
 	goi_do.create_goi_do(5 * 0.1, 2 * 0.1);
 	goi_do.CalculateNorms();
 
-	/*thanh_lien_ket.create_thanh_lien_ket(18 * 0.2, 2 * 0.2, 2 * 0.2, 1 * 0.2);
+	thanh_lien_ket.create_thanh_lien_ket(7 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
 	thanh_lien_ket.SetColor(2);
-	thanh_lien_ket.CalculateNorms();*/
+	thanh_lien_ket.CalculateNorms();
 
 	canh_quat.create_canh_quat(2 * 0.2);
 	canh_quat.SetColor(0);
@@ -2886,6 +2886,18 @@ void create() {
 	canh_quat_2.create_canh_quat(2 * 0.2);
 	canh_quat_2.SetColor(0);
 	canh_quat_2.CalculateNorms();
+	
+	canh_quat_g.create_canh_quat(2 * 0.2);
+	canh_quat_g.SetColor(0);
+	canh_quat_g.CalculateNorms();
+
+	canh_quat_g_1.create_canh_quat(2 * 0.2);
+	canh_quat_g_1.SetColor(0);
+	canh_quat_g_1.CalculateNorms();
+
+	canh_quat_g_2.create_canh_quat(2 * 0.2);
+	canh_quat_g_2.SetColor(0);
+	canh_quat_g_2.CalculateNorms();
 
 }
 GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -3040,8 +3052,29 @@ void drawAll() {
 
 		glPushMatrix();
 		thanh_lien_ket.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(0, 0, 6 * 0.2);
+		glTranslatef(-0.5, 5, 6 * 0.2 - 1);
+		glRotatef(-45, 0, 0, 1);
 		thanh_lien_ket.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_g.setupMaterial(ambient, diffuse_green, specular, shininess);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		canh_quat_g.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_g_1.setupMaterial(ambient, diffuse_green, specular, shininess);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(120, 0, 0, 1);
+		canh_quat_g_1.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_g_2.setupMaterial(ambient, diffuse_green, specular, shininess);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(-120, 0, 0, 1);
+		canh_quat_g_2.DrawSmooth();
 		glPopMatrix();
 
 		glPopMatrix();
