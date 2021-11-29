@@ -1555,23 +1555,23 @@ void Mesh::create_truc_quay() {
 	numVerts = 16;
 	pt = new Point3[numVerts];
 
-	pt[0].set(-0.5 * 0.2, 1.5 * 0.2, 3 * 0.2);
-	pt[1].set(0.5 * 0.2, 1.5 * 0.2, 3 * 0.2);
-	pt[2].set(1.5 * 0.2, 0.5 * 0.2, 3 * 0.2);
-	pt[3].set(1.5 * 0.2, -0.5 * 0.2, 3 * 0.2);
-	pt[4].set(0.5 * 0.2, -1.5 * 0.2, 3 * 0.2);
-	pt[5].set(-0.5 * 0.2, -1.5 * 0.2, 3 * 0.2);
-	pt[6].set(-1.5 * 0.2, -0.5 * 0.2, 3 * 0.2);
-	pt[7].set(-1.5 * 0.2, 0.5 * 0.2, 3 * 0.2);
+	pt[0].set(-0.5 * 0.1, 1.5 * 0.1, 3 * 0.1);
+	pt[1].set(0.5 * 0.1, 1.5 * 0.1, 3 * 0.1);
+	pt[2].set(1.5 * 0.1, 0.5 * 0.1, 3 * 0.1);
+	pt[3].set(1.5 * 0.1, -0.5 * 0.1, 3 * 0.1);
+	pt[4].set(0.5 * 0.1, -1.5 * 0.1, 3 * 0.1);
+	pt[5].set(-0.5 * 0.1, -1.5 * 0.1, 3 * 0.1);
+	pt[6].set(-1.5 * 0.1, -0.5 * 0.1, 3 * 0.1);
+	pt[7].set(-1.5 * 0.1, 0.5 * 0.1, 3 * 0.1);
 
-	pt[8].set(-0.5 * 0.2, 1.5 * 0.2, -3 * 0.2);
-	pt[9].set(0.5 * 0.2, 1.5 * 0.2, -3 * 0.2);
-	pt[10].set(1.5 * 0.2, 0.5 * 0.2, -3 * 0.2);
-	pt[11].set(1.5 * 0.2, -0.5 * 0.2, -3 * 0.2);
-	pt[12].set(0.5 * 0.2, -1.5 * 0.2, -3 * 0.2);
-	pt[13].set(-0.5 * 0.2, -1.5 * 0.2, -3 * 0.2);
-	pt[14].set(-1.5 * 0.2, -0.5 * 0.2, -3 * 0.2);
-	pt[15].set(-1.5 * 0.2, 0.5 * 0.2, -3 * 0.2);
+	pt[8].set(-0.5 * 0.1, 1.5 * 0.1, -3 * 0.1);
+	pt[9].set(0.5 * 0.1, 1.5 * 0.1, -3 * 0.1);
+	pt[10].set(1.5 * 0.1, 0.5 * 0.1, -3 * 0.1);
+	pt[11].set(1.5 * 0.1, -0.5 * 0.1, -3 * 0.1);
+	pt[12].set(0.5 * 0.1, -1.5 * 0.1, -3 * 0.1);
+	pt[13].set(-0.5 * 0.1, -1.5 * 0.1, -3 * 0.1);
+	pt[14].set(-1.5 * 0.1, -0.5 * 0.1, -3 * 0.1);
+	pt[15].set(-1.5 * 0.1, 0.5 * 0.1, -3 * 0.1);
 
 
 	numFaces = 10;
@@ -2115,232 +2115,171 @@ void Mesh::create_canh_quat(float fHeight) {
 	int idx;
 	float fAngle = 2 * PI / nSegment;
 	float x, y, z;
-	float smol_radius = 1.0;
-	float large_radius = 3.0;
-	float very_smol_radius = 0.6;
-
-	numVerts = 116;
+	float k = 0.7;
+	float fRadius = 0.4 * k;
+	
+	numVerts = 12 + 17 * 2;
+	
 	pt = new Point3[numVerts];
 
-	pt[0].set(0, 0, fHeight / 2); //0
-	//1-3
-	for (i = 0; i < 3; i++) {
-		x = smol_radius * cos(PI / 6 + 2 * PI / 3 * i);
-		y = smol_radius * sin(PI / 6 + 2 * PI / 3 * i);
-		z = fHeight / 2;
-
-		pt[i + 1].set(x, y, z);
-		z = -fHeight / 2;
-		pt[i + 1 + 57].set(x, y, z);
-	}
-	int tracking = 3;
-	
-	//4-6
-	for (i = 0; i < 3; i++) {
-		x = large_radius * cos(7 * PI / 6 + 2 * PI / 3 * i);
-		y = large_radius * sin(7 * PI / 6 + 2 * PI / 3 * i);
-		z = fHeight / 2;
-
-		pt[i + tracking + 1].set(x, y, z);
-		z = -fHeight / 2;
-		pt[i + tracking + 1 + 57].set(x, y, z);
-	}
-	tracking += 3; //6
-
-	//7-23
-	for (i = 0; i < nSegment / 2 - 1; i++) {
-		x = large_radius * cos(7 * PI / 6) + very_smol_radius * cos(2 * PI / 3 + fAngle * double(i + 1));
-		y = large_radius * sin(7 * PI / 6) + very_smol_radius * sin(2 * PI / 3 + fAngle * double(i + 1));
-		z = fHeight / 2;
-
-		pt[i + tracking + 1].set(x, y, z);
-		z = -fHeight / 2;
-		pt[i + tracking + 1 + 57].set(x, y, z);
-	}
-	tracking += (nSegment / 2 - 1); // 6+ 17 = 23
-
-	//24-40
-	for (i = 0; i < nSegment / 2 - 1; i++) {
-		x = large_radius * cos(7 * PI / 6 + 2 * PI / 3) + very_smol_radius * cos(4 * PI / 3 + fAngle * double(i + 1));
-		y = large_radius * sin(7 * PI / 6 + 2 * PI / 3) + very_smol_radius * sin(4 * PI / 3 + fAngle * double(i + 1));
-		z = fHeight / 2;
-
-		pt[i + tracking + 1].set(x, y, z);
-		z = -fHeight / 2;
-		pt[i + tracking + 1 + 57].set(x, y, z);
-	}
-	tracking += (nSegment / 2 - 1); //23 + 17 = 40
-
-	//41 - 57
-	for (i = 0; i < nSegment / 2 - 1; i++) {
-		x = large_radius * cos(7 * PI / 6 + 4 * PI / 3) + very_smol_radius * cos(/*7 * PI / 6 + 4 * PI / 3*/ + fAngle * double(i + 1));
-		y = large_radius * sin(7 * PI / 6 + 4 * PI / 3) + very_smol_radius * sin(/*7 * PI / 6 + 4 * PI / 3*/ + fAngle * double(i + 1));
-		z = fHeight / 2;
-
-		pt[i + tracking + 1].set(x, y, z);
-		z = -fHeight / 2;
-		pt[i + tracking + 1 + 57].set(x, y, z);
-	}
-	tracking += (nSegment / 2 - 1);
+	pt[0].set(0, 0, fHeight / 2);
+	pt[1].set(sqrt(3) / 2 * k, 0.5 * k, fHeight / 2);
+	pt[2].set(-sqrt(3) / 2 * k, 0.5 * k, fHeight / 2);
+	pt[3].set(0.4 * k, 3.6 * k, fHeight / 2);
+	pt[4].set(-0.4 * k, 3.6 * k, fHeight / 2);
+	pt[5].set(0, 3.6 * k, fHeight / 2);
+	pt[6].set(sqrt(3) / 2 * k, 0.5 * k, -fHeight / 2);
+	pt[7].set(-sqrt(3) / 2 * k, 0.5 * k, -fHeight / 2);
+	pt[8].set(0.4 * k, 3.6 * k, -fHeight / 2);
+	pt[9].set(-0.4 * k, 3.6 * k, -fHeight / 2);
+	pt[10].set(0, 3.6 * k, -fHeight / 2);
 	pt[numVerts - 1].set(0, 0, -fHeight / 2);
 
-	numFaces = 18 + 17;
+	idx = 10;
+	for (i = 1; i < nSegment / 2; i++)
+	{
+		x = fRadius * cos(fAngle * (double)i);
+		y = 3.6 * k + fRadius * sin(fAngle * (double)i);
+		z = fHeight / 2;
+		pt[i + idx].set(x, y, z);
+
+		z = -fHeight / 2;
+		pt[i + idx + nSegment / 2 - 1].set(x, y, z);
+	}
+
+	numFaces = 3 * nSegment + 6;
+
 	face = new Face[numFaces];
-	////mat ngoai 1
-	//face[0].nVerts = 4;
-	//face[0].vert = new VertexID[face[0].nVerts];
-	//face[0].vert[0].vertIndex = 0;
-	//face[0].vert[1].vertIndex = 1;
-	//face[0].vert[2].vertIndex = 41;
-	//face[0].vert[3].vertIndex = 6;
 
-	////mat ngoai 2
-	//face[1].nVerts = 4;
-	//face[1].vert = new VertexID[face[1].nVerts];
-	//face[1].vert[0].vertIndex = 0;
-	//face[1].vert[1].vertIndex = 6;
-	//face[1].vert[2].vertIndex = 57;
-	//face[1].vert[3].vertIndex = 2;
+	//mat 1
+	idx = 0;
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 0;
+	face[idx].vert[1].vertIndex = 1;
+	face[idx].vert[2].vertIndex = 3;
+	face[idx].vert[3].vertIndex = 5;
+	idx++;
 
-	////mat ngoai 3
-	//face[2].nVerts = 4;
-	//face[2].vert = new VertexID[face[2].nVerts];
-	//face[2].vert[0].vertIndex = 0;
-	//face[2].vert[1].vertIndex = 2;
-	//face[2].vert[2].vertIndex = 7;
-	//face[2].vert[3].vertIndex = 4;
+	//mat 2
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 0;
+	face[idx].vert[1].vertIndex = 5;
+	face[idx].vert[2].vertIndex = 4;
+	face[idx].vert[3].vertIndex = 2;
+	idx++;
 
-	////mat ngoai 4
-	//face[3].nVerts = 4;
-	//face[3].vert = new VertexID[face[3].nVerts];
-	//face[3].vert[0].vertIndex = 0;
-	//face[3].vert[1].vertIndex = 4;
-	//face[3].vert[2].vertIndex = 23;
-	//face[3].vert[3].vertIndex = 3;
+	//mat tron tren ben ngoai
+	face[idx].nVerts = 3;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 5;
+	face[idx].vert[1].vertIndex = 3;
+	face[idx].vert[2].vertIndex = 11;
+	idx++;
 
-	////mat ngoai 5
-	//face[4].nVerts = 4;
-	//face[4].vert = new VertexID[face[4].nVerts];
-	//face[4].vert[0].vertIndex = 0;
-	//face[4].vert[1].vertIndex = 3;
-	//face[4].vert[2].vertIndex = 24;
-	//face[4].vert[3].vertIndex = 5;
+	for (i = 0; i < nSegment / 2 - 2; i++) {
+		face[idx].nVerts = 3;
+		face[idx].vert = new VertexID[face[idx].nVerts];
+		face[idx].vert[0].vertIndex = 5;
+			face[idx].vert[2].vertIndex = i + 12;
+		face[idx].vert[1].vertIndex = i + 11;
+		//printf("%d%d%d\n", face[idx].vert[0].vertIndex, face[idx].vert[1].vertIndex, face[idx].vert[2].vertIndex);
+		idx++;
+	}
 
-	////mat ngoai 6
-	//face[5].nVerts = 4;
-	//face[5].vert = new VertexID[face[5].nVerts];
-	//face[5].vert[0].vertIndex = 0;
-	//face[5].vert[1].vertIndex = 5;
-	//face[5].vert[2].vertIndex = 40;
-	//face[5].vert[3].vertIndex = 1;
+	face[idx].nVerts = 3;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 5;
+	face[idx].vert[1].vertIndex = 27;
+	face[idx].vert[2].vertIndex = 4;
+	idx++;
 
-	////mat ngoai 1
-	//face[6].nVerts = 4;
-	//face[6].vert = new VertexID[face[6].nVerts];
-	//face[6].vert[0].vertIndex = numVerts - 1;
-	//face[6].vert[1].vertIndex = 1 + 57;
-	//face[6].vert[2].vertIndex = 41 + 57;
-	//face[6].vert[3].vertIndex = 6 + 57;
+	//mat duoi 1
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = numVerts - 1;
+	face[idx].vert[1].vertIndex = 1 + 5;
+	face[idx].vert[2].vertIndex = 3 + 5;
+	face[idx].vert[3].vertIndex = 5 + 5;
+	idx++;
 
-	////mat ngoai 2
-	//face[7].nVerts = 4;
-	//face[7].vert = new VertexID[face[7].nVerts];
-	//face[7].vert[0].vertIndex = numVerts - 1;
-	//face[7].vert[1].vertIndex = 6 + 57;
-	//face[7].vert[2].vertIndex = 57 + 57;
-	//face[7].vert[3].vertIndex = 2 + 57;
+	//mat duoi 2
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = numVerts - 1;
+	face[idx].vert[1].vertIndex = 5 + 5;
+	face[idx].vert[2].vertIndex = 4 + 5;
+	face[idx].vert[3].vertIndex = 2 + 5;
+	idx++;
 
-	////mat ngoai 3
-	//face[8].nVerts = 4;
-	//face[8].vert = new VertexID[face[8].nVerts];
-	//face[8].vert[0].vertIndex = numVerts - 1;
-	//face[8].vert[1].vertIndex = 2 + 57;
-	//face[8].vert[2].vertIndex = 7 + 57;
-	//face[8].vert[3].vertIndex = 4 + 57;
+	//mat trong ben duoi
+	face[idx].nVerts = 3;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 10;
+	face[idx].vert[1].vertIndex = 3 + 5;
+	face[idx].vert[2].vertIndex = 11 + 17;
+	idx++;
 
-	////mat ngoai 4
-	//face[9].nVerts = 4;
-	//face[9].vert = new VertexID[face[9].nVerts];
-	//face[9].vert[0].vertIndex = numVerts - 1;
-	//face[9].vert[1].vertIndex = 4 + 57;
-	//face[9].vert[2].vertIndex = 23 + 57;
-	//face[9].vert[3].vertIndex = 3 + 57;
+	for (i = 0; i < nSegment / 2 - 2; i++) {
+		face[idx].nVerts = 3;
+		face[idx].vert = new VertexID[face[idx].nVerts];
+		face[idx].vert[0].vertIndex = 5 + 5;
+		face[idx].vert[2].vertIndex = i + 12 + 17;
+		face[idx].vert[1].vertIndex = i + 11 + 17;
+		//printf("%d%d%d\n", face[idx].vert[0].vertIndex, face[idx].vert[1].vertIndex, face[idx].vert[2].vertIndex);
+		idx++;
+	}
 
-	////mat ngoai 5
-	//face[10].nVerts = 4;
-	//face[10].vert = new VertexID[face[10].nVerts];
-	//face[10].vert[0].vertIndex = numVerts - 1;
-	//face[10].vert[1].vertIndex = 3 + 57;
-	//face[10].vert[2].vertIndex = 24 + 57;
-	//face[10].vert[3].vertIndex = 5 + 57;
+	face[idx].nVerts = 3;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 10;
+	face[idx].vert[1].vertIndex = 27 + 17;
+	face[idx].vert[2].vertIndex = 4 + 5;
+	idx++;
 
-	////mat ngoai 6
-	//face[11].nVerts = 4;
-	//face[11].vert = new VertexID[face[11].nVerts];
-	//face[11].vert[0].vertIndex = numVerts  - 1;
-	//face[11].vert[1].vertIndex = 5 + 57;
-	//face[11].vert[2].vertIndex = 40 + 57;
-	//face[11].vert[3].vertIndex = 1 + 57;
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 1;
+	face[idx].vert[1].vertIndex = 3;
+	face[idx].vert[2].vertIndex = 3 + 5;
+	face[idx].vert[3].vertIndex = 1 + 5;
+	idx++;
 
-	////mat ben 1
-	//face[12].nVerts = 4;
-	//face[12].vert = new VertexID[face[12].nVerts];
-	//face[12].vert[0].vertIndex = 1;
-	//face[12].vert[1].vertIndex = 41;
-	//face[12].vert[2].vertIndex = 41 + 57;
-	//face[12].vert[3].vertIndex = 1 + 57;
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 2;
+	face[idx].vert[1].vertIndex = 4;
+	face[idx].vert[2].vertIndex = 4 + 5;
+	face[idx].vert[3].vertIndex = 2 + 5;
+	idx++;
 
-	////mat ben 2
-	//face[13].nVerts = 4;
-	//face[13].vert = new VertexID[face[13].nVerts];
-	//face[13].vert[0].vertIndex = 2;
-	//face[13].vert[1].vertIndex = 57;
-	//face[13].vert[2].vertIndex = 57 + 57;
-	//face[13].vert[3].vertIndex = 2 + 57;
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 3;
+	face[idx].vert[1].vertIndex = 11;
+	face[idx].vert[2].vertIndex = 11 + 17;
+	face[idx].vert[3].vertIndex = 3 + 5;
+	idx++;
 
-	////mat ben 3
-	//face[14].nVerts = 4;
-	//face[14].vert = new VertexID[face[14].nVerts];
-	//face[14].vert[0].vertIndex = 2;
-	//face[14].vert[1].vertIndex = 7;
-	//face[14].vert[2].vertIndex = 7 + 57;
-	//face[14].vert[3].vertIndex = 2 + 57;
+	face[idx].nVerts = 4;
+	face[idx].vert = new VertexID[face[idx].nVerts];
+	face[idx].vert[0].vertIndex = 27;
+	face[idx].vert[1].vertIndex = 4;
+	face[idx].vert[2].vertIndex = 4 + 5;
+	face[idx].vert[3].vertIndex = 27 + 17;
+	idx++;
 
-	////mat ben 4
-	//face[15].nVerts = 4;
-	//face[15].vert = new VertexID[face[15].nVerts];
-	//face[15].vert[0].vertIndex = 3;
-	//face[15].vert[1].vertIndex = 23;
-	//face[15].vert[2].vertIndex = 23 + 57;
-	//face[15].vert[3].vertIndex = 3 + 57;
-
-	////mat ben 5
-	//face[16].nVerts = 4;
-	//face[16].vert = new VertexID[face[16].nVerts];
-	//face[16].vert[0].vertIndex = 24;
-	//face[16].vert[1].vertIndex = 3;
-	//face[16].vert[2].vertIndex = 3 + 57;
-	//face[16].vert[3].vertIndex = 24 + 57;
-
-	////mat ben 6
-	//face[17].nVerts = 4;
-	//face[17].vert = new VertexID[face[17].nVerts];
-	//face[17].vert[0].vertIndex = 40;
-	//face[17].vert[1].vertIndex = 1;
-	//face[17].vert[2].vertIndex = 1 + 57;
-	//face[17].vert[3].vertIndex = 40 + 57;
-
-	//idx = 17;
-	////mat tron ngoai 1
-	//for (i = 0; i < (nSegment / 2 - 2); i++) {
-	//	face[idx + 1 + i].nVerts = 3;
-	//	face[idx + 1 + i].vert = new VertexID[face[idx + 1 + i].nVerts];
-	//	face[idx + 1 + i].vert[0].vertIndex = 6;
-	//	face[idx + 1 + i].vert[1].vertIndex = 41 + i;
-	//	face[idx + 1 + i].vert[2].vertIndex = face[idx + 1 + i].vert[1].vertIndex + 1;
-
-	//	idx++;
-	//}
+	for (i = 0; i < nSegment / 2 - 2; i++) {
+		face[idx].nVerts = 4;
+		face[idx].vert = new VertexID[face[idx].nVerts];
+		face[idx].vert[0].vertIndex = i + 11;
+		face[idx].vert[1].vertIndex = i + 12;
+		face[idx].vert[2].vertIndex = i + 12 + 17;
+		face[idx].vert[3].vertIndex = i + 11 + 17;
+		//printf("%d%d%d\n", face[idx].vert[0].vertIndex, face[idx].vert[1].vertIndex, face[idx].vert[2].vertIndex);
+		idx++;
+	}
 }
 
 void Mesh::DrawWireframe()
@@ -2502,6 +2441,11 @@ Mesh	trucquay_1;
 Mesh	goi_do;
 Mesh	thanh_lien_ket;
 Mesh	canh_quat;
+Mesh	canh_quat_1;
+Mesh	canh_quat_2;
+Mesh	canh_quat_g;
+Mesh	canh_quat_g_1;
+Mesh	canh_quat_g_2;
 void drawAll();
 
 
@@ -2885,7 +2829,7 @@ void myInit()
 {
 
 	float	fHalfSize = 9;
-	camera_angle = -30;
+	camera_angle = 120;
 	camera_height = 5.5;
 	camera_distance = 15.0;
 
@@ -2917,23 +2861,32 @@ void myInit()
 }
 
 void create() {
-	/*trucquay.create_truc_quay();
+	trucquay.create_truc_quay();
 	trucquay.SetColor(12);
 	trucquay.CalculateNorms();
 
-	trucquay_1.CreateCylinder(10 * 0.2, 2 * 0.2);
+	trucquay_1.CreateCylinder(10 * 0.1, 2 * 0.1);
 	trucquay_1.CalculateNorms();
 
-	goi_do.create_goi_do(5 * 0.2, 2 * 0.2);
-	goi_do.CalculateNorms();*/
+	goi_do.create_goi_do(5 * 0.1, 2 * 0.1);
+	goi_do.CalculateNorms();
 
 	/*thanh_lien_ket.create_thanh_lien_ket(18 * 0.2, 2 * 0.2, 2 * 0.2, 1 * 0.2);
 	thanh_lien_ket.SetColor(2);
 	thanh_lien_ket.CalculateNorms();*/
 
 	canh_quat.create_canh_quat(2 * 0.2);
-	//canh_quat.SetColor(0);
+	canh_quat.SetColor(0);
 	canh_quat.CalculateNorms();
+
+	canh_quat_1.create_canh_quat(2 * 0.2);
+	canh_quat_1.SetColor(0);
+	canh_quat_1.CalculateNorms();
+
+	canh_quat_2.create_canh_quat(2 * 0.2);
+	canh_quat_2.SetColor(0);
+	canh_quat_2.CalculateNorms();
+
 }
 GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
 GLfloat specular[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -3049,32 +3002,46 @@ void drawAll() {
 
 		glPushMatrix();
 		trucquay.setupMaterial(ambient, diffuse_silver, specular, shininess);
-		//glTranslatef(15.0 / 4, 0.0, 2.0 / 4);
+		glTranslatef(0, 3, 2.0 / 4 - 2);
 		trucquay.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		trucquay_1.setupMaterial(ambient, diffuse_silver, specular, shininess);
-		glTranslatef(0, 0, 8 * 0.2);
+		glTranslatef(0, 3, 6 * 0.2 - 2);
 		trucquay_1.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		goi_do.setupMaterial(ambient, diffuse_blue, specular, shininess);
-		glTranslatef(0, 0, 6 * 0.2);
+		glTranslatef(0, 3, 6 * 0.2 - 2.2);
 		goi_do.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat.setupMaterial(ambient, diffuse_red, specular, shininess);
+		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		canh_quat.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_1.setupMaterial(ambient, diffuse_red, specular, shininess);
+		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(120, 0, 0, 1);
+		canh_quat_1.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_2.setupMaterial(ambient, diffuse_red, specular, shininess);
+		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(-120, 0, 0, 1);
+		canh_quat_2.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		thanh_lien_ket.setupMaterial(ambient, diffuse_orange, specular, shininess);
 		glTranslatef(0, 0, 6 * 0.2);
 		thanh_lien_ket.DrawSmooth();
-		glPopMatrix();
-
-		glPushMatrix();
-		canh_quat.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(0, 3, 6 * 0.2);
-		canh_quat.DrawSmooth();
 		glPopMatrix();
 
 		glPopMatrix();
