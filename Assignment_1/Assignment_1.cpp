@@ -1,6 +1,6 @@
 ﻿/*
-	Ho va ten: Le Kha
-	MSSV     : 1810976
+	Ho va ten: Nguyen Duy Son
+	MSSV     : 1811197
 */
 
 
@@ -3170,7 +3170,23 @@ void drawAll() {
 		thanh_lien_ket_5.DrawSmooth();
 		glPopMatrix();
 
+		glPushMatrix();
+		trucquay.setupMaterial(ambient, diffuse_silver, specular, shininess);
+		glTranslatef(-1, 4, 6 * 0.2 + 1.4);
+		trucquay.DrawSmooth();
+		glPopMatrix();
 
+		glPushMatrix();
+		trucquay_1.setupMaterial(ambient, diffuse_silver, specular, shininess);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.6);
+		trucquay_1.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		goi_do.setupMaterial(ambient, diffuse_blue, specular, shininess);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.8);
+		goi_do.DrawSmooth();
+		glPopMatrix();
 
 		glPopMatrix();
 	}
@@ -3325,7 +3341,7 @@ int main(int argc, char* argv[])
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);//set the display mode
 	glutInitWindowSize(screenWidth, screenHeight); //set window size
 	glutInitWindowPosition(100, 100); // set window position on screen
-	glutCreateWindow("Le Kha - 1810976"); // open the screen window
+	glutCreateWindow("Nguyen Duy Son - 1811197"); // open the screen window
 
 	create();
 	myInit();
