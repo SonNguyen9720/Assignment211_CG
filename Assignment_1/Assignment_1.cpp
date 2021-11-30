@@ -3177,19 +3177,19 @@ void drawAll() {
 
 		glPushMatrix();
 		trucquay.setupMaterial(ambient, diffuse_silver, specular, shininess);
-		glTranslatef(-1, 4, 6 * 0.2 + 1.4);
+		glTranslatef(-1, 4, 6 * 0.2 + 1.6);
 		trucquay.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		trucquay_1.setupMaterial(ambient, diffuse_silver, specular, shininess);
-		glTranslatef(-1, 4, 6 * 0.2 + 0.6);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.8);
 		trucquay_1.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		goi_do.setupMaterial(ambient, diffuse_blue, specular, shininess);
-		glTranslatef(-1, 4, 6 * 0.2 + 0.8);
+		glTranslatef(-1, 4, 6 * 0.2 + 1);
 		goi_do.DrawSmooth();
 		glPopMatrix();
 
@@ -3250,6 +3250,25 @@ void drawAll() {
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
 		glTranslatef(1.1, 0.75, 6 * 0.2 - 0.2);
+		chot.DrawSmooth();
+		glPopMatrix();
+
+		/////////////////////////////////////////////////////////////
+		glPushMatrix();
+		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
+		glTranslatef(-1, 6.5, 6 * 0.2 - 0.2);
+		chot.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
+		glTranslatef(-3.1, 2.75, 6 * 0.2 - 0.2);
+		chot.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
+		glTranslatef(1.1, 2.75, 6 * 0.2 - 0.2);
 		chot.DrawSmooth();
 		glPopMatrix();
 
