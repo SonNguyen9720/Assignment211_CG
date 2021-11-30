@@ -2440,12 +2440,21 @@ Mesh	trucquay;
 Mesh	trucquay_1;
 Mesh	goi_do;
 Mesh	thanh_lien_ket;
+Mesh	thanh_lien_ket_1;
+Mesh	thanh_lien_ket_2;
 Mesh	canh_quat;
 Mesh	canh_quat_1;
 Mesh	canh_quat_2;
 Mesh	canh_quat_g;
 Mesh	canh_quat_g_1;
 Mesh	canh_quat_g_2;
+Mesh	canh_quat_y;
+Mesh	canh_quat_y_1;
+Mesh	canh_quat_y_2;
+Mesh	thanh_lien_ket_3;
+Mesh	thanh_lien_ket_4;
+Mesh	thanh_lien_ket_5;
+
 void drawAll();
 
 
@@ -2872,8 +2881,16 @@ void create() {
 	goi_do.CalculateNorms();
 
 	thanh_lien_ket.create_thanh_lien_ket(7 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
-	thanh_lien_ket.SetColor(2);
+	thanh_lien_ket.SetColor(0);
 	thanh_lien_ket.CalculateNorms();
+
+	thanh_lien_ket_1.create_thanh_lien_ket(7 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
+	thanh_lien_ket_1.SetColor(0);
+	thanh_lien_ket_1.CalculateNorms();
+
+	thanh_lien_ket_2.create_thanh_lien_ket(7 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
+	thanh_lien_ket_2.SetColor(0);
+	thanh_lien_ket_2.CalculateNorms();
 
 	canh_quat.create_canh_quat(2 * 0.2);
 	canh_quat.SetColor(0);
@@ -2898,6 +2915,30 @@ void create() {
 	canh_quat_g_2.create_canh_quat(2 * 0.2);
 	canh_quat_g_2.SetColor(0);
 	canh_quat_g_2.CalculateNorms();
+
+	canh_quat_y.create_canh_quat(2 * 0.2);
+	canh_quat_y.SetColor(0);
+	canh_quat_y.CalculateNorms();
+
+	canh_quat_y_1.create_canh_quat(2 * 0.2);
+	canh_quat_y_1.SetColor(0);
+	canh_quat_y_1.CalculateNorms();
+
+	canh_quat_y_2.create_canh_quat(2 * 0.2);
+	canh_quat_y_2.SetColor(0);
+	canh_quat_y_2.CalculateNorms();
+
+	thanh_lien_ket_3.create_thanh_lien_ket(10 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
+	thanh_lien_ket_3.SetColor(0);
+	thanh_lien_ket_3.CalculateNorms();
+
+	thanh_lien_ket_4.create_thanh_lien_ket(10 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
+	thanh_lien_ket_4.SetColor(0);
+	thanh_lien_ket_4.CalculateNorms();
+
+	thanh_lien_ket_5.create_thanh_lien_ket(10 * 0.2, 2 * 0.2, 1.5 * 0.2, 0.8 * 0.2);
+	thanh_lien_ket_5.SetColor(0);
+	thanh_lien_ket_5.CalculateNorms();
 
 }
 GLfloat ambient[] = { 0.0, 0.0, 0.0, 1.0 };
@@ -3058,6 +3099,20 @@ void drawAll() {
 		glPopMatrix();
 
 		glPushMatrix();
+		thanh_lien_ket_1.setupMaterial(ambient, diffuse_orange, specular, shininess);
+		glTranslatef(-2.6, 1.25, 6 * 0.2 - 1);
+		glRotatef(-45, 0, 0, 1);
+		thanh_lien_ket_1.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		thanh_lien_ket_2.setupMaterial(ambient, diffuse_orange, specular, shininess);
+		glTranslatef(1.6, 1.25, 6 * 0.2 - 1);
+		glRotatef(-45, 0, 0, 1);
+		thanh_lien_ket_2.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
 		canh_quat_g.setupMaterial(ambient, diffuse_green, specular, shininess);
 		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
 		canh_quat_g.DrawSmooth();
@@ -3076,6 +3131,46 @@ void drawAll() {
 		glRotatef(-120, 0, 0, 1);
 		canh_quat_g_2.DrawSmooth();
 		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_y.setupMaterial(ambient, diffuse_yellow, specular, shininess);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		canh_quat_y.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_y_1.setupMaterial(ambient, diffuse_yellow, specular, shininess);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(120, 0, 0, 1);
+		canh_quat_y_1.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		canh_quat_y_2.setupMaterial(ambient, diffuse_yellow, specular, shininess);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(-120, 0, 0, 1);
+		canh_quat_y_2.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		thanh_lien_ket_3.setupMaterial(ambient, diffuse_orange, specular, shininess);
+		glTranslatef(-1, 5.5, 6 * 0.2 - 0.2);
+		thanh_lien_ket_3.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		thanh_lien_ket_4.setupMaterial(ambient, diffuse_orange, specular, shininess);
+		glTranslatef(-3.2, 1.8, 6 * 0.2 - 0.2);
+		thanh_lien_ket_4.DrawSmooth();
+		glPopMatrix();
+
+		glPushMatrix();
+		thanh_lien_ket_5.setupMaterial(ambient, diffuse_orange, specular, shininess);
+		glTranslatef(1.2, 1.8, 6 * 0.2 - 0.2);
+		thanh_lien_ket_5.DrawSmooth();
+		glPopMatrix();
+
+
 
 		glPopMatrix();
 	}
