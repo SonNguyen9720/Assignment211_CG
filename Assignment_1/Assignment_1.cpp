@@ -2803,19 +2803,11 @@ void key(int key, int x, int y) {
 
 void movement(unsigned char key, int x, int y) {
 	if (key == '1') {
-		if (ANG <= 16) {
-			ANG += 1;
-			ANG1 -= 1.5;
-			ANG3 += 15.0 / 22;
-		}
+		ANG -= 1;
 
 	}
 	else if (key == '2') {
-		if (ANG >= 1) {
-			ANG -= 1;
-			ANG1 += 1.5;
-			ANG3 -= 15.0 / 22;
-		}
+		ANG += 1;
 	}
 
 	else if (key == '+')
@@ -3061,12 +3053,14 @@ void drawAll() {
 		glPushMatrix();
 		trucquay.setupMaterial(ambient, diffuse_silver, specular, shininess);
 		glTranslatef(0, 3, 2.0 / 4 - 2);
+		glRotatef(ANG, 0, 0, 1);
 		trucquay.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		trucquay_1.setupMaterial(ambient, diffuse_silver, specular, shininess);
 		glTranslatef(0, 3, 6 * 0.2 - 2);
+		glRotatef(ANG, 0, 0, 1);
 		trucquay_1.DrawSmooth();
 		glPopMatrix();
 
@@ -3079,12 +3073,14 @@ void drawAll() {
 		glPushMatrix();
 		canh_quat.setupMaterial(ambient, diffuse_red, specular, shininess);
 		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(ANG, 0, 0, 1);
 		canh_quat.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		canh_quat_1.setupMaterial(ambient, diffuse_red, specular, shininess);
 		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(ANG, 0, 0, 1);
 		glRotatef(120, 0, 0, 1);
 		canh_quat_1.DrawSmooth();
 		glPopMatrix();
@@ -3092,40 +3088,50 @@ void drawAll() {
 		glPushMatrix();
 		canh_quat_2.setupMaterial(ambient, diffuse_red, specular, shininess);
 		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(ANG, 0, 0, 1);
 		glRotatef(-120, 0, 0, 1);
 		canh_quat_2.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
-		thanh_lien_ket.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(-0.5, 5, 6 * 0.2 - 1);
-		glRotatef(-45, 0, 0, 1);
+		thanh_lien_ket.setupMaterial(ambient, diffuse_orange, specular, shininess);		
+		glTranslatef(-0.5, 2.5, 6 * 0.2 - 1);
+		//glTranslatef(-1, 2, 6 * 0.2 - 0.6);	
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(0, 2.5, 0);
+		glRotatef(-45 - ANG, 0, 0, 1);
 		thanh_lien_ket.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		thanh_lien_ket_1.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(-2.6, 1.25, 6 * 0.2 - 1);
-		glRotatef(-45, 0, 0, 1);
+		glTranslatef(-0.5, 2.5, 6 * 0.2 - 1);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(-2.1, -1.25, 0);
+		glRotatef(-45 - ANG, 0, 0, 1);
 		thanh_lien_ket_1.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		thanh_lien_ket_2.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(1.6, 1.25, 6 * 0.2 - 1);
-		glRotatef(-45, 0, 0, 1);
+		glTranslatef(-0.5, 2.5, 6 * 0.2 - 1);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(2.1, -1.25, 0);
+		glRotatef(-45 - ANG, 0, 0, 1);
 		thanh_lien_ket_2.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		canh_quat_g.setupMaterial(ambient, diffuse_green, specular, shininess);
 		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
 		canh_quat_g.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		canh_quat_g_1.setupMaterial(ambient, diffuse_green, specular, shininess);
 		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
 		glRotatef(120, 0, 0, 1);
 		canh_quat_g_1.DrawSmooth();
 		glPopMatrix();
@@ -3133,6 +3139,7 @@ void drawAll() {
 		glPushMatrix();
 		canh_quat_g_2.setupMaterial(ambient, diffuse_green, specular, shininess);
 		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
 		glRotatef(-120, 0, 0, 1);
 		canh_quat_g_2.DrawSmooth();
 		glPopMatrix();
@@ -3140,12 +3147,14 @@ void drawAll() {
 		glPushMatrix();
 		canh_quat_y.setupMaterial(ambient, diffuse_yellow, specular, shininess);
 		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
 		canh_quat_y.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		canh_quat_y_1.setupMaterial(ambient, diffuse_yellow, specular, shininess);
 		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
 		glRotatef(120, 0, 0, 1);
 		canh_quat_y_1.DrawSmooth();
 		glPopMatrix();
@@ -3153,37 +3162,50 @@ void drawAll() {
 		glPushMatrix();
 		canh_quat_y_2.setupMaterial(ambient, diffuse_yellow, specular, shininess);
 		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
 		glRotatef(-120, 0, 0, 1);
 		canh_quat_y_2.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		thanh_lien_ket_3.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(-1, 5.5, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 3, 6 * 0.2 - 0.2);
+		//glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(0, 2.5, 0);
+		glRotatef(-ANG, 0, 0, 1);
 		thanh_lien_ket_3.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		thanh_lien_ket_4.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(-3.1, 1.75, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 3, 6 * 0.2 - 0.2);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(-2.1, -1.25, 0);
+		glRotatef(-ANG, 0, 0, 1);
 		thanh_lien_ket_4.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		thanh_lien_ket_5.setupMaterial(ambient, diffuse_orange, specular, shininess);
-		glTranslatef(1.1, 1.75, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 3, 6 * 0.2 - 0.2);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(2.1, -1.25, 0);
+		glRotatef(-ANG, 0, 0, 1);
 		thanh_lien_ket_5.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		trucquay.setupMaterial(ambient, diffuse_silver, specular, shininess);
 		glTranslatef(-1, 4, 6 * 0.2 + 1.6);
+		glRotatef(ANG, 0, 0, 1);
 		trucquay.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		trucquay_1.setupMaterial(ambient, diffuse_silver, specular, shininess);
 		glTranslatef(-1, 4, 6 * 0.2 + 0.8);
+		glRotatef(ANG, 0, 0, 1);
 		trucquay_1.DrawSmooth();
 		glPopMatrix();
 
@@ -3197,19 +3219,25 @@ void drawAll() {
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(0, 5.5, 6 * 0.2 - 1);
+		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(0, 2.5, 0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-2.1, 1.75, 6 * 0.2 - 1);
+		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(-2.1, -1.25, 0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(2.1, 1.75, 6 * 0.2 - 1);
+		glTranslatef(0, 3, 6 * 0.2 - 1.4);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(2.1, -1.25, 0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
@@ -3218,57 +3246,75 @@ void drawAll() {
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-1, 4.5, 6 * 0.2 - 1);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(0, 2.5, -0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-3.1, 0.75, 6 * 0.2 - 1);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(-2.1, -1.25, -0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(1.1, 0.75, 6 * 0.2 - 1);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(2.1, -1.25, -0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		/////////////////////////////////////////////////////////////////
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-1, 4.5, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(0, 2.5, 0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-3.1, 0.75, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(-2.1, -1.25, 0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(1.1, 0.75, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 2, 6 * 0.2 - 0.6);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(2.1, -1.25, 0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		/////////////////////////////////////////////////////////////
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-1, 6.5, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(0, 2.5, -0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(-3.1, 2.75, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(-2.1, -1.25, -0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
 		glPushMatrix();
 		chot.setupMaterial(ambient, diffuse_red, specular, shininess);
-		glTranslatef(1.1, 2.75, 6 * 0.2 - 0.2);
+		glTranslatef(-1, 4, 6 * 0.2 + 0.2);
+		glRotatef(ANG, 0, 0, 1);
+		glTranslatef(2.1, -1.25, -0.4);
 		chot.DrawSmooth();
 		glPopMatrix();
 
